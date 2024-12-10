@@ -1,8 +1,9 @@
 {
   "name": "css-to-tailwind-code",
-  "displayName": "css-to-tailwind-code",
-  "description": "",
+  "displayName": "CSS to Tailwind Code",
+  "description": "A VS Code extension that converts standard CSS properties to Tailwind CSS classes.",
   "version": "0.0.1",
+  "publisher": "your-publisher-name",
   "engines": {
     "vscode": "^1.95.0"
   },

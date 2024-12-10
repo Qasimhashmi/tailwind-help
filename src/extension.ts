@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 
-// Mapping from CSS properties to Tailwind classes
+
 const cssToTailwindMap: { [key: string]: string } = {
     'display: flex;': 'flex',
     'display: block;': 'block',
@@ -60,23 +60,22 @@ const cssToTailwindMap: { [key: string]: string } = {
     'z-index: 10;': 'z-10',
     'z-index: 50;': 'z-50',
     'z-index: auto;': 'z-auto',
-    // Add more mappings as needed
 };
 
 function convertCssToTailwind(cssString: string): string {
     return cssString
-        .split(';') // Split into individual CSS rules
+        .split(';') 
         .map(rule => {
             const [property, value] = rule.split(':').map(part => part.trim());
-            if (!property || !value) return ''; // Skip invalid or empty rules
+            if (!property || !value) return '';
 
-            // Match full CSS rule
+          
             const cssRule = `${property}: ${value};`;
-            return cssToTailwindMap[cssRule] || ''; // Return Tailwind class or skip
+            return cssToTailwindMap[cssRule] || ''; 
         })
-        .filter(Boolean) // Remove empty results
-        .join(' ') // Combine into a single class string
-        .trim(); // Remove any trailing spaces
+        .filter(Boolean) 
+        .join(' ') 
+        .trim(); 
 }
 
 export function activate(context: vscode.ExtensionContext) {
@@ -96,7 +95,7 @@ export function activate(context: vscode.ExtensionContext) {
             return;
         }
 
-        // Convert the selected CSS to Tailwind classes
+      
         const convertedText = convertCssToTailwind(selectedText);
 
         editor.edit(editBuilder => {
